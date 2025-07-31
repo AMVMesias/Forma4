@@ -42,26 +42,31 @@
     <div class="form-group">
       <label for="expenseAmount">Monto</label>
       <input type="number" id="expenseAmount" step="0.01" required placeholder="0.00">
-      <div class="error" id="amountError">Ingrese un monto válido.</div>
+      <div class="form-text">Valor entre 0.01 y 10000.</div>
+      <div class="error" id="amountError">Ingrese un monto válido (máximo 10000).</div>
     </div>
     <div class="form-group">
       <label for="invoiceNumber">Número de Factura</label>
       <input type="text" id="invoiceNumber" maxlength="9" required placeholder="Ej: 123456789">
+      <div class="form-text">Exactamente 9 dígitos numéricos.</div>
       <div class="error" id="invoiceError">Debe tener 9 dígitos.</div>
     </div>
     <div class="form-group">
       <label for="providerRuc">RUC del Proveedor</label>
       <input type="text" id="providerRuc" maxlength="13" required placeholder="Ej: 1234567890123">
+      <div class="form-text">Exactamente 13 dígitos numéricos.</div>
       <div class="error" id="rucError">Debe tener 13 dígitos.</div>
     </div>
     <div class="form-group">
       <label for="responsibleCedula">Cédula del Responsable</label>
       <input type="text" id="responsibleCedula" maxlength="10" required placeholder="Ej: 1234567890">
+      <div class="form-text">Exactamente 10 dígitos numéricos.</div>
       <div class="error" id="cedulaError">Debe tener 10 dígitos.</div>
     </div>
     <div class="form-group">
       <label for="expenseFile">Comprobante (PDF, PNG, JPG)</label>
       <input type="file" id="expenseFile" accept=".pdf,.png,.jpg,.jpeg" required>
+      <div class="form-text">Formatos permitidos: PDF, PNG, JPG.</div>
       <div class="error" id="fileError">Seleccione un archivo con formato PDF, PNG o JPG.</div>
     </div>
     <button type="submit">Registrar Gasto</button>
@@ -96,7 +101,7 @@
 
       if (!date) { showError('dateError'); valid = false; }
       if (!category) { showError('categoryError'); valid = false; }
-      if (!amount || isNaN(amount) || Number(amount) <= 0) { showError('amountError'); valid = false; }
+      if (!amount || isNaN(amount) || Number(amount) <= 0 || Number(amount) > 10000) { showError('amountError'); valid = false; }
       if (invoice.length !== 9) { showError('invoiceError'); valid = false; }
       if (ruc.length !== 13) { showError('rucError'); valid = false; }
       if (cedula.length !== 10) { showError('cedulaError'); valid = false; }
